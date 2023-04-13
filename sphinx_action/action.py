@@ -137,7 +137,7 @@ def build_docs(build_command, docs_directory):
     return return_code, annotations
 
 
-def build_all_docs(github_env, docs_directories):
+def build_all_docs(github_env, docs_directories, fail_on_warning):
     if len(docs_directories) == 0:
         raise ValueError("Please provide at least one docs directory to build")
 
@@ -154,7 +154,10 @@ def build_all_docs(github_env, docs_directories):
             build_success = False
 
         warnings += len(annotations)
-
+        
+        if ((fail_on_warning) & (warnings > 0)):
+            build_success = False
+            
         for annotation in annotations:
             status_check.output_annotation(annotation)
 
