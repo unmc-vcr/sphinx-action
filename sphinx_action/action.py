@@ -155,7 +155,7 @@ def build_all_docs(github_env, docs_directories, fail_on_warning):
 
         warnings += len(annotations)
         
-        if ((fail_on_warning) & (warnings > 0)):
+        if ((fail_on_warning == 'true') & (warnings > 0)):
             build_success = False
             
         for annotation in annotations:
