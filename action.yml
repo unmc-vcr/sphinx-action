@@ -21,6 +21,12 @@ inputs:
       dependencies, for example with
       "apt-get update -y && apt-get install -y perl"
     required: false
+  fail-on-warning:
+    description:
+      When true, the build will fail if there are any warnings detected in the
+      output logs.
+    required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
